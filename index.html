@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +8,16 @@
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1002.0.min.js"></script>
 <style>
     body {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #1f1c2c, #928dab);
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+}
 
     .promo-container {
         position: relative;
@@ -31,12 +25,10 @@
         border-radius: 12px;
         text-align: center;
         max-width: 350px;
-		height: 450px;
-        width: 90%;
-        box-sizing: border-box;
+        width: 100%;
         overflow: hidden;
+        height: 500px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        margin-bottom: 20px;
     }
 
     .promo-container::before {
@@ -71,7 +63,7 @@
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.9);
         border-radius: 12px;
-		margin-top: 60px;
+        margin-top: 120px;
     }
 
     input[type="text"] {
@@ -80,7 +72,7 @@
         margin: 10px 0;
         border: 2px solid #007bff;
         border-radius: 24px;
-        width: 100%;
+        width: calc(100% - 24px);
         box-sizing: border-box;
     }
 
@@ -145,6 +137,19 @@
     }
 
     @media (max-width: 600px) {
+        input[type="text"] {
+            font-size: 14px;
+        }
+
+        input[type="submit"], button {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .scrolling-text {
+            font-size: 14px;
+        }
+
         .button-container {
             flex-direction: column;
         }
@@ -160,7 +165,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 90%;
+        width: 80%;
         max-width: 600px;
         padding: 20px;
         background-color: white;
@@ -257,57 +262,68 @@
         border-radius: 8px;
         display: none;
     }
+	.containerr {
+    background-color: #24ac9a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    width: 95%;
+    height: 300px;
+    text-align: center;
+	margin-top: 20px;
+	
+}
 
-    .video-container {
-        text-align: center;
-        width: 100%;
-    }
+h1 {
+    margin-bottom: 20px;
+    font-family: 'Great Vibes', cursive;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
 
-    .video-title {
-        font-size: 20px;
-        font-weight: bold;
-        color: #ffffff;
-        margin-top: 10px;
-    }
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 
-    .video-frame {
-        width: 100%;
-        max-width: 640px;
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
+.footer {
+    margin-top: 20px;
+    color: #aaa;
+}
 </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="promo-container" id="promoContainer">
-        <div class="promo-content" id="promoContent">
-            <form id="promoForm" onsubmit="return validatePromoCode()">
-                <input type="text" id="promoCode" name="promoCode" placeholder="Enter Promo code" required><br>
-                <div class="button-container">
-                    <input type="submit" value="Submit">
-                    <button type="button" onclick="visitWebsite()">Visit Website</button>
-                </div>
-                <p id="errorMessage" class="error-message"></p>
-                <div class="scrolling-text-container">
-                    <div class="scrolling-text">This offer is valid till 10 May 2024</div>
-                </div>
-                <button class="share-button" type="button" onclick="sharePromo()">Copy Link</button>
-                <div class="share-message" id="shareMessage">Link copied</div>
-            </form>
-        </div>
+<div class="promo-container" id="promoContainer">
+    <div class="promo-content" id="promoContent">
+        <form id="promoForm" onsubmit="return validatePromoCode()">
+            <input type="text" id="promoCode" name="promoCode" placeholder="Enter Promo code" required><br>
+            <div class="button-container">
+                <input type="submit" value="Submit">
+                <button type="button" onclick="visitWebsite()">Visit Website</button>
+            </div>
+            <p id="errorMessage" class="error-message"></p>
+            <div class="scrolling-text-container">
+                <div class="scrolling-text">This offer is valid till 10 May 2024</div>
+            </div>
+            <button class="share-button" type="button" onclick="sharePromo()">Copy Link</button>
+            <div class="share-message" id="shareMessage">Link copied</div>
+        </form>
     </div>
-
-    <div class="video-container">
-        <video class="video-frame" controls>
+</div>
+ <div class="containerr">
+        <h1>LeuvenFlyers</h1>
+        <video controls>
             <source src="https://bafybeiab6baasbsrzq7cpeqols7k4splku67tefyno64pgwdzlzdmolh4a.ipfs.nftstorage.link/" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="video-title"></div>
+        <div class="footer">
+            &copy; 2024 LeuvenFlyers. All rights reserved.
+        </div>
     </div>
-</div>
 
 <div class="popup" id="popup" style="display: none;">
     <button class="close-btn" onclick="closePopup()">×</button>
@@ -377,3 +393,4 @@
 
 </body>
 </html>
+
